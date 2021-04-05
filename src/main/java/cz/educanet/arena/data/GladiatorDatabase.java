@@ -1,3 +1,4 @@
+
 package cz.educanet.arena.data;
 
 import cz.educanet.arena.logic.Gladiator;

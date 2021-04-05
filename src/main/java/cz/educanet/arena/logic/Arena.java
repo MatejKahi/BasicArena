@@ -7,27 +7,42 @@ public class Arena {
 
     private Gladiator gladiator1;
     private Gladiator gladiator2;
+    public static Gladiator winner;
+
+    public Arena(){
+
+    }
+
+
     /**
      * Represents the current round. This property is incremented each round.
      */
-    private int round;
+    private int round = 1;
+
+
 
     /**
      * Makes the gladiators fight one round.
      */
+
+
     public void fight() {
-        // TODO:
-        // Gladiator 1 should deal (random) damage to Gladiator 2
-        // Gladiator 2 should deal (random) damage to Gladiator 1
-        throw new UnsupportedOperationException();
+        if(gladiator1.isDead()){
+            this.setWinner(gladiator2);
+
+        }else if (gladiator2.isDead()){
+            this.setWinner(gladiator1);
+
+        }else{
+            System.out.println("----------------------------ROUND " +round+ "-------------------------------------" );
+            gladiator1.dealDamage(gladiator2);
+            gladiator2.dealDamage(gladiator1);
+            round ++;
+        }
     }
 
-    /**
-     * @return the winner, null if none.
-     */
-    public Gladiator getWinner() {
-        // TODO:
-        throw new UnsupportedOperationException();
+    public void setWinner(Gladiator winner) {
+        this.winner = winner;
     }
 
     public void setGladiator1(Gladiator gladiator1) {
@@ -37,4 +52,8 @@ public class Arena {
     public void setGladiator2(Gladiator gladiator2) {
         this.gladiator2 = gladiator2;
     }
+    public Gladiator getWinner(){
+     return winner;
+    }
 }
+

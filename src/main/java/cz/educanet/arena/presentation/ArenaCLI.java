@@ -10,6 +10,11 @@ public class ArenaCLI {
 
     private Arena logic;
     private Scanner sc;
+    private  Gladiator gladiator1;
+    private  Gladiator gladiator2;
+    public ArenaCLI (){
+
+    }
 
     /**
      * Initialize all variables that are needed.
@@ -34,8 +39,6 @@ public class ArenaCLI {
         System.out.println("Pick your fighter #2 (enter the path of the saved file):");
         String gladiator2File = sc.nextLine();
 
-        Gladiator gladiator1 = GladiatorDatabase.loadGladiator(gladiator1File);
-        Gladiator gladiator2 = GladiatorDatabase.loadGladiator(gladiator2File);
         logic.setGladiator1(gladiator1);
         logic.setGladiator2(gladiator2);
     }
@@ -44,8 +47,10 @@ public class ArenaCLI {
      * Fight until one gladiator dies, or surrenders.
      */
     public void renderEntireFight() {
-        // TODO:
-        // while(...) {logic.fight.... sout...}
+        while (logic.getWinner() == null) {
+            logic.fight();
+
+        }
     }
 
 }
